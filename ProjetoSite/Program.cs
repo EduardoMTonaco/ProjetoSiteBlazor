@@ -1,16 +1,18 @@
 using ProjetoSite.Class;
 using ProjetoSite.Components;
+using Microsoft.Extensions.Configuration;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Configuration.AddUserSecrets<Program>();
 var app = builder.Build();
 {
-    //SQLHandler sql = new SQLHandler("data source=Eduardo\\MSSQLSERVER01;initial catalog=SiteTeste;user id=Eduardo;Password=3!*$4&*$sd24@#0");
-    SQLHandler sql = new SQLHandler("data source=Eduardo\\MSSQLSERVER01;initial catalog=SiteTeste;Integrated Security=SSPI;TrustServerCertificate=True");
-    //Integrated Security=SSPI;TrustServerCertificate=True
+    string conection = builder.Configuration.GetConnectionString("DefaultConnection");   
+    SQLHandler sql = new SQLHandler(conection);   
 }
 
 // Configure the HTTP request pipeline.
@@ -31,3 +33,4 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 app.Run();
+
