@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /ProjetoSite/secrets.json
 /ProjetoSite/appsettings.Development.json
+/ProjetoSite/appsettings.json
+/ProjetoSite/appsettings.json
