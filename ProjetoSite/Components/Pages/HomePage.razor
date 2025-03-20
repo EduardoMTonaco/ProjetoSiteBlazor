@@ -1,0 +1,17 @@
+﻿@page "/"
+@using ProjetoSite.Components.Pages.Product
+@rendermode InteractiveServer
+
+<PageTitle>Home</PageTitle>
+
+<h1>Exemplo de modal no Blazor</h1>
+
+<button @onclick="AbrirModal">Abrir modal</button>
+
+<ProductModal @ref="productModal" Title="Adicionar Produto" IsOpen="isOpen" Width="500" Height="500">
+    <ChildContent>
+    </ChildContent>
+    <FooterContent>
+    @*     <button @onclick="FecharModal">Fechar</button> *@
+    </FooterContent>
+</ProductModal>
